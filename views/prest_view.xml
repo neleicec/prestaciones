@@ -2,21 +2,7 @@
 
 <odoo>
 	<data>
-		<record id="prest_view" model="ir.ui.view">
-			<field name="name">prest1</field>
-			<field name="model">prestaciones</field>
-			<field name="arch" type="xml">
-				<form string="Prestaciones Sociales">
-					<group>
-						<field name="name"></field>
-            			<field name="trimestre"></field>
-            			<field name="wage1"></field>
-            			<field name="wage_day1"></field>
-            		</group>
-            	</form>
-            </field>
-        </record>
-        Agregando el sueldo en empleados
+		        Agregando el sueldo en empleados
        <record id="wage_view" model="ir.ui.view">
 			<field name="name">prest2</field>
 			<field name="model">hr.employee</field>
