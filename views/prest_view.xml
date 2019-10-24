@@ -12,6 +12,9 @@
             			<field name="trimestre"></field>
             			<field name="wage1"></field>
             			<field name="wage_day1"></field>
+						<field name="alic_util"></field>
+						<field name="alic_vac"></field>
+						<field name="sal_int"></field>
             		</group>
             	</form>
             </field>
