@@ -15,6 +15,7 @@
 						<field name="alic_util"></field>
 						<field name="alic_vac"></field>
 						<field name="sal_int"></field>
+						<field name="dias_sal"></field>
             		</group>
             	</form>
             </field>

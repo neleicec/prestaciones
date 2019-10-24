@@ -12,9 +12,11 @@ class prest(models.Model):
 	alic_util= fields.Float(string='Alicuota de Utilidades', digits=(26,2))
 	alic_vac= fields.Float(string='Alicuota de Vacaciones', digits=(26,2))
 	sal_int= fields.Float(string='Salario Integral', digits=(26,2))
+	
 # #Son fijos
-# 	def dias(self):
-# 	return 15
+ 	def _dias(self):
+		return 15
+	dias_sal = fields.Integer(string='Dias', default=_dias)
 
 class employee(models.Model):
 	_inherit='hr.employee'
