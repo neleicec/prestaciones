@@ -26,7 +26,7 @@ class prest(models.Model):
 	def _alic(self):
 		for record in self:
 			record.alic_util = (((record.wage1/30) * 30)/360)
-	alic_util= fields.Float(string='Alicuota de Utilidades', digits=(26,2),default=_alic)
+	alic_util= fields.Float(string='Alicuota de Utilidades', digits=(26,2),default=_alic, readonly=True)
 # Crar campo Wage1 en Empleado
 class employee(models.Model):
 	_inherit='hr.employee'
