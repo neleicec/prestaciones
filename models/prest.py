@@ -18,14 +18,7 @@ class prest(models.Model):
 		return 15
 	dias_sal = fields.Integer(string='Dias', default=_dias)
 
+# Crar campo Wage1 en Empleado
 class employee(models.Model):
 	_inherit='hr.employee'
 	wage1 = fields.Float('Wage', digits=(16,2), required=True)
-	wage_day1 = fields.Float(string='Salario Diario',digits=(26,2), readonly=True)
-
-# @api.onchange('name')
-# def _onchange_employee_id(self):
-# 	old_wage=self.employee_id.wage1
-# 	old_wage_day=(self.employee_id.wage_day1)/ 30
-# 	wage1 = old_wage
-# 	wage_day1 = old_wage_day
