@@ -16,6 +16,7 @@
 						<field name="alic_vac"></field>
 						<field name="sal_int"></field>
 						<field name="dias_sal"></field>
+						<field name="vac_concepto"></field>
             		</group>
             	</form>
             </field>
@@ -28,6 +29,7 @@
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='department_id']" position="after">
 					<field name="wage1"></field>
+					<field name="concepto_vac"></field>
 				</xpath>
             </field>
         </record>
