@@ -90,12 +90,21 @@ class prest(models.Model):
 	@api.onchange('name')
 	def _total1(self):
 		for record in self:
-			record.total_prest = (record.sal_int * record.dias_sal)
-	total_prest= fields.Float(
+			record.total_prest1 = (record.sal_int * record.dias_sal)
+	total_prest1= fields.Float(
 		string='Concepto Prestaciones', 
 		readonly=True, 
 		default=_total1)
 
+	@api.onchange('name')
+	def _total2(self):
+		for record in self:
+			record.total_prest2 = (record.sal_int * record.dias_h)
+	total_prest2= fields.Float(
+		string='Concepto Dias Adicionales', 
+		readonly=True, 
+		default=_total2)		
+	
 
 # Crar campo Wage1 en Empleado
 
