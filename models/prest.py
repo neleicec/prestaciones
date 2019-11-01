@@ -10,7 +10,8 @@ class prest(models.Model):
 	trimestre = fields.Selection(
 		string = 'Selection Trimester', 
 		selection=[('trimestre1', 'First Trimester'),('trimestre2','Second Trimester'),('trimestre3','Third Quarter'),('trimestre4','Fourth Trimester')],
-		required=True, 
+		required=True,
+		default='trimestre1', 
 		help='Indique el trimestre a calcular')
 	wage1 = fields.Float('Wage',
 		digits=(16,2), 
@@ -39,7 +40,7 @@ class prest(models.Model):
 	wage_day1= fields.Float(
 		string='Salario Diario', 
 		digits=(26,2), 
-		default=_saldia, 
+		compute='_saldia', 
 		readonly=True)
 
 	@api.onchange('name')
@@ -49,7 +50,7 @@ class prest(models.Model):
 	alic_util= fields.Float(
 		string='Alicuota de Utilidades', 
 		digits=(26,2),
-		default=_alic, 
+		compute='_alic', 
 		readonly=True)
 
 	@api.onchange('name')
@@ -68,7 +69,8 @@ class prest(models.Model):
 	sal_int= fields.Float(
 		string='Salario Integral', 
 		digits=(26,2), 
-		readonly=True)
+		readonly=True,
+		compute='_int')
 
 
 	@api.onchange('name')
@@ -85,7 +87,7 @@ class prest(models.Model):
 		string='Dias Adicionales', 
 		digits=(26,2), 
 		readonly=True, 
-		default=_diah)
+		compute='_diah')
 
 	@api.onchange('name')
 	def _total1(self):
@@ -94,7 +96,7 @@ class prest(models.Model):
 	total_prest1= fields.Float(
 		string='Concepto Prestaciones', 
 		readonly=True, 
-		default=_total1)
+		compute='_total1')
 
 	@api.onchange('name')
 	def _total2(self):
@@ -103,7 +105,7 @@ class prest(models.Model):
 	total_prest2= fields.Float(
 		string='Concepto Dias Adicionales', 
 		readonly=True, 
-		default=_total2)		
+		compute='_total2')		
 	
 
 # Crar campo Wage1 en Empleado
