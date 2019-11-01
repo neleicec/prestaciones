@@ -5,7 +5,7 @@
 		<record id="prest_view" model="ir.ui.view">
 			<field name="name">prest1</field>
 			<field name="model">prest</field>
-			<field name="arch" type="xml">
+			<field name="arch" type="xml"> 
 				<form string="Prestaciones Sociales">
 					<group>
 						<field name="name"></field>

@@ -4,8 +4,7 @@
 	<!--Accion abrir el menu -->
 	<act_window id="action_prest_soc"
 		name="Social Benefits"
-		res_model="prest"
-		view_mode="tree,form"/>
+		res_model="prest"/>
 	<!--Elemento de menú para abrir la lista-->
 	<menuitem id="menu_prest_soc"
 		name="Prestaciones Sociales"
