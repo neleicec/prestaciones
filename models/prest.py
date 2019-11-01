@@ -87,6 +87,16 @@ class prest(models.Model):
 		readonly=True, 
 		default=_diah)
 
+	@api.onchange('name')
+	def _total1(self):
+		for record in self:
+			record.total_prest = (record.sal_int * record.dias_sal)
+	total_prest= fields.Float(
+		string='Concepto Prestaciones', 
+		readonly=True, 
+		default=_total1)
+
+
 # Crar campo Wage1 en Empleado
 
 class employee(models.Model):

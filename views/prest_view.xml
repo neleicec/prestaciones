@@ -18,6 +18,7 @@
 						<field name="dias_sal"></field>
 						<field name="vac_concepto"></field>
 						<field name="dias_h"></field>
+						<field name="total_prest"></field>
             		</group>
             	</form>
             </field>
