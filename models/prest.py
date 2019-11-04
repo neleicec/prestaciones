@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- 
 
 from odoo import models, fields, api
-
+#Declarando Variables Sencillas
 class prest(models.Model):
 	_name='prest'
 	name = fields.Many2one('hr.employee', 
@@ -24,8 +24,7 @@ class prest(models.Model):
 		required=True, 
 		related='name.concepto_vac', 
 		readonly=True)
-	
-	
+
  	def _dias(self):
 		return 15
 	dias_sal = fields.Integer(
@@ -97,16 +96,17 @@ class prest(models.Model):
 		string='Concepto Prestaciones', 
 		readonly=True, 
 		compute='_total1')
-
-	@api.onchange('name')
-	def _total2(self):
+		
+	@api.onchange('trimestre')
+	def _trim(self):
 		for record in self:
-			record.total_prest2 = (record.sal_int * record.dias_h)
+			if record.trimestre == 'trimestre4':
+				record.total_prest2 = (record.sal_int * record.dias_h) 
 	total_prest2= fields.Float(
 		string='Concepto Dias Adicionales', 
 		readonly=True, 
-		compute='_total2')		
-	
+		compute='_trim')
+
 
 # Crar campo Wage1 en Empleado
 
