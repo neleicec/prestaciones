@@ -17,10 +17,14 @@
 						<field name="sal_int"></field>
 						<field name="dias_sal"></field>
 						<field name="vac_concepto"></field>
-						<field name="dias_h"></field>
 						<field name="total_prest1"></field>
-						<field name="total_prest2"></field>
             		</group>
+					<p class="text-center">ANUAL</p>
+					<group>
+						<field name="dias_h"></field>
+						<field name="total_prest2"></field>
+						<field name="anual"></field>
+					</group>
             	</form>
             </field>
         </record>

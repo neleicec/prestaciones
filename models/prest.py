@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- 
 
 from odoo import models, fields, api
-#Declarando Variables Sencillas
+# CAMPOS TRIMESTRALES
 class prest(models.Model):
 	_name='prest'
 	name = fields.Many2one('hr.employee', 
@@ -71,6 +71,36 @@ class prest(models.Model):
 		readonly=True,
 		compute='_int')
 
+	@api.onchange('name')
+	def _total1(self):
+		for record in self:
+			record.total_prest1 = (record.sal_int * record.dias_sal)
+	total_prest1= fields.Float(
+		string='Concepto Prestaciones', 
+		readonly=True, 
+		compute='_total1')
+
+	@api.onchange('trimestre')
+	def _trim(self):
+		for record in self:
+			if record.trimestre == 'trimestre4':
+				record.total_prest2 = (record.sal_int * record.dias_h) 
+	total_prest2= fields.Float(
+		string='Concepto Dias Adicionales', 
+		readonly=True, 
+		compute='_trim')
+
+	@api.onchange('trimestre')
+	def _al_ano(self):
+		for record in self:
+			if record.trimestre == 'trimestre4':
+				record.anual = (record.total_prest1 + record.total_prest2)
+	anual= fields.Float(
+		string='Anual',
+		readonly=True,
+		compute='_al_ano')
+
+	# CAMPOS ANUALES 
 
 	@api.onchange('name')
 	def _diah(self):
@@ -88,24 +118,6 @@ class prest(models.Model):
 		readonly=True, 
 		compute='_diah')
 
-	@api.onchange('name')
-	def _total1(self):
-		for record in self:
-			record.total_prest1 = (record.sal_int * record.dias_sal)
-	total_prest1= fields.Float(
-		string='Concepto Prestaciones', 
-		readonly=True, 
-		compute='_total1')
-		
-	@api.onchange('trimestre')
-	def _trim(self):
-		for record in self:
-			if record.trimestre == 'trimestre4':
-				record.total_prest2 = (record.sal_int * record.dias_h) 
-	total_prest2= fields.Float(
-		string='Concepto Dias Adicionales', 
-		readonly=True, 
-		compute='_trim')
 
 
 # Crar campo Wage1 en Empleado
