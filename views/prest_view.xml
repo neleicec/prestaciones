@@ -7,6 +7,7 @@
 			<field name="model">prest</field>
 			<field name="arch" type="xml"> 
 				<form string="Prestaciones Sociales">
+					<h1><small>CÁLCULO TRIMESTRAL</small></h1>
 					<group>
 						<field name="name"></field>
             			<field name="trimestre"></field>
@@ -19,7 +20,7 @@
 						<field name="vac_concepto"></field>
 						<field name="total_prest1"></field>
             		</group>
-					<p class="text-center">ANUAL</p>
+					<h1><small>CÁLCULO ANUAL</small></h1>
 					<group>
 						<field name="dias_h"></field>
 						<field name="total_prest2"></field>
