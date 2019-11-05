@@ -5,15 +5,16 @@ from odoo import models, fields, api
 class prest(models.Model):
 	_name='prest'
 	name = fields.Many2one('hr.employee', 
-		string='Employee', 
+		string='Empleado', 
 		required=True)
 	trimestre = fields.Selection(
-		string = 'Selection Trimester', 
+		string = 'Seleccione Trimestre', 
 		selection=[('trimestre1', 'First Trimester'),('trimestre2','Second Trimester'),('trimestre3','Third Quarter'),('trimestre4','Fourth Trimester')],
 		required=True,
 		default='trimestre1', 
 		help='Indique el trimestre a calcular')
-	wage1 = fields.Float('Wage',
+	wage1 = fields.Float(
+		string='Sueldo',
 		digits=(16,2), 
 		required=True, 
 		related='name.wage1',
@@ -47,7 +48,7 @@ class prest(models.Model):
 		for record in self:
 			record.alic_util = (((record.wage1/30) * 30)/360)
 	alic_util= fields.Float(
-		string='Alicuota de Utilidades', 
+		string='Alicuota Utilidades', 
 		digits=(26,2),
 		compute='_alic', 
 		readonly=True)
@@ -57,7 +58,7 @@ class prest(models.Model):
 		for record in self:
 			record.alic_vac = ((record.wage1/30)*(record.vac_concepto) / 360)
 	alic_vac= fields.Float(
-		string='Alicuota de Vacaciones', 
+		string='Alicuota Vacaciones', 
 		digits=(26,2), 
 		compute=_vac)
 
@@ -85,16 +86,11 @@ class prest(models.Model):
 		for record in self:
 			if record.trimestre == 'trimestre4':
 				record.total_prest2 = (record.sal_int * record.dias_h) 
+				record.anual = (record.total_prest1 + record.total_prest2)
 	total_prest2= fields.Float(
 		string='Concepto Dias Adicionales', 
 		readonly=True, 
-		compute='_trim')
-
-	@api.onchange('trimestre')
-	def _al_ano(self):
-		for record in self:
-			if record.trimestre == 'trimestre4':
-				record.anual = (record.total_prest1 + record.total_prest2)
+		compute='_trim')			
 	anual= fields.Float(
 		string='Anual',
 		readonly=True,
