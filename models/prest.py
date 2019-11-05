@@ -13,7 +13,7 @@ class prest(models.Model):
 		required=True,
 		default='trimestre1', 
 		help='Indique el trimestre a calcular')
-	wage1 = fields.Float(
+	sueldo = fields.Float(
 		string='Sueldo',
 		digits=(16,2), 
 		required=True, 
@@ -36,7 +36,7 @@ class prest(models.Model):
 	@api.onchange('name')
 	def _saldia(self):
 		for record in self:
-			record.wage_day1 = record.wage1 / 30
+			record.wage_day1 = record.sueldo / 30
 	wage_day1= fields.Float(
 		string='Salario Diario', 
 		digits=(26,2), 
@@ -46,7 +46,7 @@ class prest(models.Model):
 	@api.onchange('name')
 	def _alic(self):
 		for record in self:
-			record.alic_util = (((record.wage1/30) * 30)/360)
+			record.alic_util = (((record.sueldo/30) * 30)/360)
 	alic_util= fields.Float(
 		string='Alicuota Utilidades', 
 		digits=(26,2),
@@ -56,7 +56,7 @@ class prest(models.Model):
 	@api.onchange('name')
 	def _vac(self):
 		for record in self:
-			record.alic_vac = ((record.wage1/30)*(record.vac_concepto) / 360)
+			record.alic_vac = ((record.sueldo/30)*(record.vac_concepto) / 360)
 	alic_vac= fields.Float(
 		string='Alicuota Vacaciones', 
 		digits=(26,2), 
@@ -65,7 +65,7 @@ class prest(models.Model):
 	@api.onchange('name')
 	def _int(self):
 		for record in self:
-			record.sal_int = ((record.wage1/30)+ record.alic_util + record.vac_concepto)
+			record.sal_int = ((record.sueldo/30)+ record.alic_util + record.vac_concepto)
 	sal_int= fields.Float(
 		string='Salario Integral', 
 		digits=(26,2), 
