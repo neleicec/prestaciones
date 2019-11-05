@@ -97,27 +97,35 @@ class prest(models.Model):
 	anual= fields.Float(
 		string='Total Prestaciones Anuales',
 		readonly=True,
-		compute='_al_ano')
+		compute='_trim')
 
 	# CAMPOS ANUALES 
 
 	@api.onchange('name')
 	def _diah(self):
 		for record in self:
-				if (record.name.years_service) <= 2.0:
-					dias_h = 0.0
-				else: 
-					years_service2 = float(record.name.years_service)
-					sumador = years_service2 - 1.0
-					sumadorx = sumador * 2.0 
-					record.dias_h = sumadorx
-					if(record.dias_h) >=30.0:
-						record.dias_h=30
+			if (record.name.years_service) <= 2.0:
+				dias_h = 0.0
+			else: 
+				years_service2 = float(record.name.years_service)
+				sumador = years_service2 - 1.0
+				sumadorx = sumador * 2.0 
+				record.dias_h = sumadorx
+				if(record.dias_h) >=30.0:
+					record.dias_h=30
 	dias_h= fields.Float(
 		string='Dias Adicionales', 
 		digits=(26,2), 
 		readonly=True, 
 		compute='_diah')
+	@api.onchange('tasa_t')
+	def _tasat(self):
+		for record in self:
+			record.interes = (record.tasa_t * record.total_prest1) / 1200
+	interes=fields.Float(
+		string='Interes Trimestral',
+		compute='_tasat')
+
 
 
 

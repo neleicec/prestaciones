@@ -26,6 +26,7 @@
 						<group string="Cálculo Trimestral">
 							<field name="total_prest1"></field>
 							<field name="tasa_t"></field>
+							<field name="interes"></field>
 						</group>
 						<group string="Cáculo Anual">
 							<field name="total_prest2"></field>
