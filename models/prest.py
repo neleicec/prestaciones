@@ -25,6 +25,9 @@ class prest(models.Model):
 		required=True, 
 		related='name.concepto_vac', 
 		readonly=True)
+	tasa_t=fields.Float(
+		string='Tasa Trimestral',
+		required=True)
 
  	def _dias(self):
 		return 15

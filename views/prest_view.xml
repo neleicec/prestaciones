@@ -12,21 +12,22 @@
 							<field name="name"></field>
 							<field name="sueldo"></field>
 							<field name="wage_day1"></field>
+							<field name="sal_int"></field>
 						</group>
 						
 						<group string="Datos de las Prestaciones">
 							<field name="trimestre"></field>
+							<field name="dias_sal"></field>
+							<field name="dias_h"></field>
 							<field name="alic_util"></field>
 							<field name="alic_vac"></field>
-							<field name="sal_int"></field>
-							<field name="dias_sal"></field>
 							<field name="vac_concepto"></field>
-							<field name="total_prest1"></field>
             			</group>					
 						<group string="Cálculo Trimestral">
-							<field name="dias_h"></field>
 							<field name="total_prest2"></field>
 							<field name="anual"></field>
+							<field name="total_prest1"></field>
+							<field name="tasa_t"></field>
 						</group>
 					</group>
             	</form>
