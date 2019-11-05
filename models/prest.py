@@ -80,7 +80,7 @@ class prest(models.Model):
 		for record in self:
 			record.total_prest1 = (record.sal_int * record.dias_sal)
 	total_prest1= fields.Float(
-		string='Concepto Prestaciones', 
+		string='Pago Prestaciones', 
 		readonly=True, 
 		compute='_total1')
 
@@ -91,11 +91,11 @@ class prest(models.Model):
 				record.total_prest2 = (record.sal_int * record.dias_h) 
 				record.anual = (record.total_prest1 + record.total_prest2)
 	total_prest2= fields.Float(
-		string='Concepto Dias Adicionales', 
+		string='Pago Adicional', 
 		readonly=True, 
 		compute='_trim')			
 	anual= fields.Float(
-		string='Anual',
+		string='Total Prestaciones Anuales',
 		readonly=True,
 		compute='_al_ano')
 

@@ -21,13 +21,15 @@
 							<field name="dias_h"></field>
 							<field name="alic_util"></field>
 							<field name="alic_vac"></field>
-							<field name="vac_concepto"></field>
+							<field name="vac_concepto" invisible="1"></field>
             			</group>					
 						<group string="Cálculo Trimestral">
-							<field name="total_prest2"></field>
-							<field name="anual"></field>
 							<field name="total_prest1"></field>
 							<field name="tasa_t"></field>
+						</group>
+						<group string="Cáculo Anual">
+							<field name="total_prest2"></field>
+							<field name="anual"></field>
 						</group>
 					</group>
             	</form>
