@@ -13,4 +13,13 @@
 		name="Prestaciones"
 		parent="menu_prest_soc"
 		action="action_prest_soc"/>
+
+	<act_window id="action_prest_liqui"
+		name="Liquidacion"
+		res_model="presta"/>
+		
+	<menuitem id="menu_liqui"
+		name="liquidacion"
+		parent="menu_prest_soc"
+		action="action_prest_liqui"/>
 </odoo>
