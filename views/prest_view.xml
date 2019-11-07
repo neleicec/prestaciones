@@ -7,32 +7,34 @@
 			<field name="model">prest</field>
 			<field name="arch" type="xml"> 
 				<form string="Prestaciones Sociales">
-					<group>
-						<group string="Datos del Empleado">
-							<field name="name"></field>
-							<field name="sueldo"></field>
-							<field name="wage_day1"></field>
-							<field name="sal_int"></field>
+					<sheet>
+						<group>
+							<group string="Datos del Empleado">
+								<field name="name"></field>
+								<field name="sueldo"></field>
+								<field name="wage_day1"></field>
+								<field name="sal_int"></field>
+							</group>
+							
+							<group string="Datos de las Prestaciones">
+								<field name="trimestre"></field>
+								<field name="dias_sal"></field>
+								<field name="dias_h"></field>
+								<field name="alic_util"></field>
+								<field name="alic_vac"></field>
+								<field name="vac_concepto" invisible="1"></field>
+							</group>					
+							<group string="Cálculo Trimestral">
+								<field name="total_prest1"></field>
+								<field name="tasa_t"></field>
+								<field name="interes"></field>
+							</group>
+							<group string="Cáculo Anual">
+								<field name="total_prest2"></field>
+								<field name="anual"></field>
+							</group>
 						</group>
-						
-						<group string="Datos de las Prestaciones">
-							<field name="trimestre"></field>
-							<field name="dias_sal"></field>
-							<field name="dias_h"></field>
-							<field name="alic_util"></field>
-							<field name="alic_vac"></field>
-							<field name="vac_concepto" invisible="1"></field>
-            			</group>					
-						<group string="Cálculo Trimestral">
-							<field name="total_prest1"></field>
-							<field name="tasa_t"></field>
-							<field name="interes"></field>
-						</group>
-						<group string="Cáculo Anual">
-							<field name="total_prest2"></field>
-							<field name="anual"></field>
-						</group>
-					</group>
+					</sheet>
             	</form>
             </field>
         </record>

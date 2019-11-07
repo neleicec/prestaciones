@@ -7,6 +7,10 @@
 		res_model="prest"/>
 	<!--Elemento de menú para abrir la lista-->
 	<menuitem id="menu_prest_soc"
-		name="Prestaciones Sociales"
+		name="Prestaciones Sociales"/>
+
+	<menuitem id="menu_prest_so"
+		name="Prestaciones"
+		parent="menu_prest_soc"
 		action="action_prest_soc"/>
 </odoo>
