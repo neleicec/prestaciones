@@ -97,7 +97,10 @@ class prest(models.Model):
 	anual= fields.Float(
 		string='Total Prestaciones Anuales',
 		readonly=True,
-		compute='_trim')
+		compute='_trim',
+		required=True,
+		default= 0.0,
+		digits=(26,2))
 
 	# CAMPOS ANUALES 
 
