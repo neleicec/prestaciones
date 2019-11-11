@@ -28,7 +28,7 @@
 								<field name="name"></field>
 								<field name="fecha_ing"></field>
 								<field name="fecha_actual"></field>
-								<field name="prueba"></field>
+								<field name="total_total"></field>
 							</group>
 						</group>
 					</sheet>

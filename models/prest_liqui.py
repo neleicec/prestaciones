@@ -24,13 +24,16 @@ class presta(models.Model):
 		# 
 		# 
 		# 
-	prueba = fields.Char(
-		string='prueba',
-		compute='_totaltotal')
 	
-
 	@api.multi
-	def _totaltotal(self):
+	@api.onchange('name')
+	def _totaltotal (self):
 		for record in self:
-			if (record.name.id)== record.prest.name.id:
-				record.prueba= "funciona"
+			lista_anual = [self.env['prest'].anual]
+			lista_id = [self.env['prest'].name.id]
+			for i in (lista_id):
+				if record.name.id == self.env['prest'].name.id:
+					record.total_total = record.total_total + lista_anual[i]
+	total_total = fields.Integer(
+		string='Total a Liquidar',
+		compute='_totaltotal')
