@@ -34,9 +34,10 @@ class prest(models.Model):
 	dias_sal = fields.Integer(
 		string='Dias', 
 		default=_dias, 
-		readonly=True)
+		readonly=True,
+		store=True)
 
-	@api.onchange('name')
+	@api.depends('name')
 	def _saldia(self):
 		for record in self:
 			record.wage_day1 = record.sueldo / 30
@@ -44,9 +45,10 @@ class prest(models.Model):
 		string='Salario Diario', 
 		digits=(26,2), 
 		compute='_saldia', 
-		readonly=True)
+		readonly=True,
+		store=True)
 
-	@api.onchange('name')
+	@api.depends('name')
 	def _alic(self):
 		for record in self:
 			record.alic_util = (((record.sueldo/30) * 30)/360)
@@ -54,18 +56,20 @@ class prest(models.Model):
 		string='Alicuota Utilidades', 
 		digits=(26,2),
 		compute='_alic', 
-		readonly=True)
+		readonly=True,
+		store=True)
 
-	@api.onchange('name')
+	@api.depends('name')
 	def _vac(self):
 		for record in self:
 			record.alic_vac = ((record.sueldo/30)*(record.vac_concepto) / 360)
 	alic_vac= fields.Float(
 		string='Alicuota Vacaciones', 
 		digits=(26,2), 
-		compute=_vac)
+		compute='_vac',
+		store=True)
 
-	@api.onchange('name')
+	@api.depends('name')
 	def _int(self):
 		for record in self:
 			record.sal_int = ((record.sueldo/30)+ record.alic_util + record.vac_concepto)
@@ -73,18 +77,20 @@ class prest(models.Model):
 		string='Salario Integral', 
 		digits=(26,2), 
 		readonly=True,
-		compute='_int')
+		compute='_int',
+		store=True)
 
-	@api.onchange('name')
+	@api.depends('name')
 	def _total1(self):
 		for record in self:
 			record.total_prest1 = (record.sal_int * record.dias_sal)
 	total_prest1= fields.Float(
 		string='Pago Prestaciones', 
 		readonly=True, 
-		compute='_total1')
+		compute='_total1',
+		store=True)
 
-	@api.onchange('trimestre')
+	@api.depends('trimestre')
 	def _trim(self):
 		for record in self:
 			if record.trimestre == 'trimestre4':
@@ -93,18 +99,20 @@ class prest(models.Model):
 	total_prest2= fields.Float(
 		string='Pago Adicional', 
 		readonly=True, 
-		compute='_trim')			
+		compute='_trim',
+		store=True)			
 	anual= fields.Float(
 		string='Total Prestaciones Anuales',
 		readonly=True,
 		compute='_trim',
 		required=True,
 		default= 0.0,
-		digits=(26,2))
+		digits=(26,2),
+		store=True)
 
 	# CAMPOS ANUALES 
 
-	@api.onchange('name')
+	@api.depends('name')
 	def _diah(self):
 		for record in self:
 			if (record.name.years_service) <= 2.0:
@@ -120,14 +128,16 @@ class prest(models.Model):
 		string='Dias Adicionales', 
 		digits=(26,2), 
 		readonly=True, 
-		compute='_diah')
-	@api.onchange('tasa_t')
+		compute='_diah',
+		store=True)
+	@api.depends('tasa_t')
 	def _tasat(self):
 		for record in self:
 			record.interes = (record.tasa_t * record.total_prest1) / 1200
 	interes=fields.Float(
 		string='Interes Trimestral',
-		compute='_tasat')
+		compute='_tasat',
+		store=True)
 
 
 
@@ -138,8 +148,10 @@ class employee(models.Model):
 	_inherit='hr.employee'
 	wage1 = fields.Float('Wage', 
 		digits=(16,2), 
-		required=True)
+		required=True,
+		store=True)
 	concepto_vac = fields.Float(
 		string='Concepto Vacaciones', 
 		required=True, 
-		help="Número de días que le pagan al trabajador por concepto de vacaciones")
+		help="Número de días que le pagan al trabajador por concepto de vacaciones",
+		store=True)

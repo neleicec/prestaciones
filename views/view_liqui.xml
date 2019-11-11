@@ -29,6 +29,7 @@
 								<field name="fecha_ing"></field>
 								<field name="fecha_actual"></field>
 								<field name="total_total"></field>
+								<field name="total_interes"/>
 							</group>
 						</group>
 					</sheet>
