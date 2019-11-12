@@ -38,7 +38,7 @@ class presta(models.Model):
 				
 
 	total_total = fields.Float(
-		string='Total a Liquidar',
+		string='Total a pagar por los años',
 		compute='_totaltotal',
 		store=True)
 	total_interes = fields.Float(
@@ -55,6 +55,19 @@ class presta(models.Model):
 				record.doblete = 0.0
 	dobleteB = fields.Boolean(
 		string= 'Contiene Doblete',
+		store = True)
+	
+	
+	@api.depends('name','dobleteB')
+	def _totalfinal (self):
+		for record in self:
+			if record.dobleteB == False:
+				record.final = record.total_total + record.total_interes 
+			else:
+				record.final = record.total_total + record.total_interes + record.doblete
+	final = fields.Float(
+		string= 'Total a Liquidar',
+		compute = '_totalfinal',
 		store = True)
 	doblete = fields.Float(
 		string = 'Total Doblete',

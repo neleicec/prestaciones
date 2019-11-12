@@ -32,6 +32,7 @@
 								<field name="total_interes"/>
 								<field name="dobleteB"/>
 								<field name= "doblete"/>
+								<field name= "final"/>
 							</group>
 						</group>
 					</sheet>
