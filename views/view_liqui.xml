@@ -30,6 +30,8 @@
 								<field name="fecha_actual"></field>
 								<field name="total_total"></field>
 								<field name="total_interes"/>
+								<field name="dobleteB"/>
+								<field name= "doblete"/>
 							</group>
 						</group>
 					</sheet>

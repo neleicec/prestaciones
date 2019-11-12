@@ -44,5 +44,20 @@ class presta(models.Model):
 	total_interes = fields.Float(
 		string="Total Intereses",
 		compute="_totaltotal",
-		store=True
-	)
+		store=True)
+
+	@api.depends('dobleteB')
+	def _doble(self):
+		for record in self:
+			if record.dobleteB == True:
+				record.doblete = record.total_total * 2
+			else:
+				record.doblete = 0.0
+	dobleteB = fields.Boolean(
+		string= 'Contiene Doblete',
+		store = True)
+	doblete = fields.Float(
+		string = 'Total Doblete',
+		compute = '_doble',
+		store = True)
+	
