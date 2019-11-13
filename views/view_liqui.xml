@@ -28,10 +28,14 @@
 								<field name="name"></field>
 								<field name="fecha_ing"></field>
 								<field name="fecha_actual"></field>
+								<field name="dobleteB"/>
+							</group>
+							<group string= "Datos de las Prestaciones">
 								<field name="total_total"></field>
 								<field name="total_interes"/>
-								<field name="dobleteB"/>
 								<field name= "doblete"/>
+							</group>
+							<group string= "Total a cancelar por Liquidaciones"> 
 								<field name= "final"/>
 							</group>
 						</group>
