@@ -14,6 +14,7 @@
 								<field name="sueldo"></field>
 								<field name="wage_day1"></field>
 								<field name="sal_int"></field>
+								<field name = "historico_prest"></field>
 							</group>
 							
 							<group string="Datos de las Prestaciones">
@@ -47,6 +48,7 @@
 				<xpath expr="//field[@name='department_id']" position="after">
 					<field name="wage1"></field>
 					<field name="concepto_vac"></field>
+					<field name="historico_prestaciones"></field>
 				</xpath>
             </field>
         </record>

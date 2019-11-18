@@ -28,6 +28,11 @@ class prest(models.Model):
 	tasa_t=fields.Float(
 		string='Tasa Trimestral',
 		required=True)
+	historico_prest = fields.Float(
+		string='Histórico', 
+		required=True, 
+		related='name.historico_prestaciones', 
+		readonly=True)
 
  	def _dias(self):
 		return 15
@@ -155,3 +160,7 @@ class employee(models.Model):
 		required=True, 
 		help="Número de días que le pagan al trabajador por concepto de vacaciones",
 		store=True)
+	historico_prestaciones = fields.Float(
+		string = 'Historico Prestaciones',
+		digits = (16,2),
+		store = True)
